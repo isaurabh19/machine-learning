@@ -20,17 +20,36 @@ def get_nn_model(no_dims):
     return model
 
 
-def train_nn(input_data, targets, k=10):
+def get_all_metrics(y_score, y_true, phase):
+    pass
+
+def get_best_model(scores_target_list):
+    """
+    Find the model that has the max precision-recall auc or roc auc. Print training mean metrics
+    :param scores_target_list:
+    :return:
+    """
+    
+    pass
+
+def train_nn(train_validation_data, test_data, k=10):
     kf = KFold(k, random_state=10)
     class_weights = {0: 1.,
                      1: 2.1}
     early_stopping = EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=3, restore_best_weights=True)
-    pred_target=[]
-    for train, test in kf.split(input_data, targets):
+    pred_target = []
+    input_data = train_validation_data[:, :-1]
+    targets = train_validation_data[:, -1:]
+    for train_indices, test_indices in kf.split(input_data, targets):
         model = get_nn_model(input_data.shape[1])
-        histoy = model.fit(train[:, :-1], train[:, -1:], validation_data=test, epochs=10000, callbacks=early_stopping,
-                           class_weight=class_weights, validation_freq=2, verbose=1)
-        predictions = model.predict(test[:,:-1], verbose=1)
-        pred_target.append((predictions, test[:, -1:]))
+        histoy = model.fit(input_data[train_indices], targets[train_indices], epochs=10000,
+                           callbacks=early_stopping, class_weight=class_weights, validation_freq=2, verbose=1)
+        predictions_score = model.predict(input_data[test_indices], verbose=1)
+        pred_target.append((predictions_score, targets[test_indices]))
 
-    return pred_target
+    best_model = get_best_model(pred_target)
+    test_predictions = best_model.predict(test_data[:, :-1], verbose=1)
+    get_all_metrics(test_predictions, test_data[:, -1:], 'test')
+
+
+
