@@ -1,4 +1,5 @@
 from sklearn.model_selection import KFold
+from sklearn.metrics import roc_auc_score
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.callbacks import EarlyStopping
@@ -29,8 +30,17 @@ def get_best_model(scores_target_list):
     :param scores_target_list:
     :return:
     """
-    
-    pass
+    max_roc_auc = 0
+    max_pr_auc = 0
+    best_model = scores_target_list[0][2]
+    best_roc = 0
+    for y_score, y_true, model in scores_target_list:
+        auroc = roc_auc_score(y_true, y_score)
+        if auroc >= best_roc:
+            best_roc = auroc
+            best_model = model
+        
+    return best_model
 
 def train_nn(train_validation_data, test_data, k=10):
     kf = KFold(k, random_state=10)
@@ -45,7 +55,7 @@ def train_nn(train_validation_data, test_data, k=10):
         histoy = model.fit(input_data[train_indices], targets[train_indices], epochs=10000,
                            callbacks=early_stopping, class_weight=class_weights, validation_freq=2, verbose=1)
         predictions_score = model.predict(input_data[test_indices], verbose=1)
-        pred_target.append((predictions_score, targets[test_indices]))
+        pred_target.append((predictions_score, targets[test_indices], model))
 
     best_model = get_best_model(pred_target)
     test_predictions = best_model.predict(test_data[:, :-1], verbose=1)
