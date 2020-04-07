@@ -68,13 +68,13 @@ def get_song_ids(song_list):
 
 
 if __name__ == "__main__":
-    urls = dfs_crawl('/wiki/Category:2019_songs', [])
+    urls = dfs_crawl('/wiki/Category:2020_songs', [])
     song_list = []
     for url in urls:
         song_list = page_crawl(url, song_list)
     ids = get_song_ids(song_list)
     df = pd.DataFrame(data=ids)
-    df.to_csv('2019.csv')
+    df.to_csv('2020.csv')
     # dfs_crawl('https://en.wikipedia.org/wiki/Category:2017_songs', [])
     # songs = page_crawl("https://en.wikipedia.org/wiki/Category:2017_songs")
     # ids = get_song_ids(songs)
