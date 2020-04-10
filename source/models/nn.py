@@ -15,7 +15,7 @@ from keras.callbacks import EarlyStopping
 
 def get_nn_model(no_dims):
     model = Sequential()
-    model.add(Dense(2 * no_dims, input(no_dims, ), activation="tanh"))
+    model.add(Dense(2 * no_dims, input_dim=no_dims, activation="tanh"))
     model.add(Dense(1, activation='tanh'))
     model.compile(optimizer='adadelta', loss='mean_squared_error')
     return model
@@ -53,7 +53,7 @@ def train_nn(train_validation_data, test_data, k=10):
     for train_indices, test_indices in kf.split(input_data, targets):
         model = get_nn_model(input_data.shape[1])
         histoy = model.fit(input_data[train_indices], targets[train_indices], epochs=10000,
-                           callbacks=early_stopping, class_weight=class_weights, validation_freq=2, verbose=1)
+                           callbacks=[early_stopping], class_weight=class_weights, verbose=1)
         predictions_score = model.predict(input_data[test_indices], verbose=1)
         pred_target.append((predictions_score, targets[test_indices], model))
 
