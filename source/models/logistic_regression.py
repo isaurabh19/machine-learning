@@ -15,8 +15,8 @@ class Logistic_Regression_model:
             Y_train, Y_test = X_train[:, -1], X_test[:, -1]
             clf = LogisticRegression(random_state=0).fit(X_train, Y_train)
             Y_pred = clf.predict(Y_test)
-            roc_scores[i].append(roc_auc_score(Y_t, Y_pred))
-            accuracy_scores[i].append(accuracy_score(Y_t, Y_pred))
+            roc_scores[i].append(roc_auc_score(Y_test, Y_pred))
+            accuracy_scores[i].append(accuracy_score(Y_test, Y_pred))
         return np.mean(accuracy_scores), np.mean(roc_scores)
 
 
