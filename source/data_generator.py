@@ -2,6 +2,7 @@ from fycharts.SpotifyCharts import SpotifyCharts
 from joblib import Parallel, delayed
 import glob
 import pandas as pd
+import numpy as np
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
 import pprint
@@ -37,12 +38,13 @@ def collect_attributes_for_song(ids_list):
         features_list.extend(features)
         counter += end - start
         # print("Done {}/{}".format(counter, total_songs))
-        start +=50
+        start += 50
         end = end + 50 if end + 50 <= total_songs else total_songs
 
     features_df = pd.DataFrame(features_list)
     features_df.to_csv("..//data/features.csv")
     return features_df
+
 
 def get_spotify_client():
     client_credentials_manager = SpotifyClientCredentials(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET)
@@ -57,20 +59,71 @@ def merge_csv():
     df_merged.to_csv("..//data/positive_dataset.csv")
 
 
+def remove_hit_songs(csv, positive_song_df):
+    negative_df = pd.read_csv(csv, index_col=0)
+    negative_df = negative_df.drop_duplicates(subset='spotify_id')
+    negative_df = negative_df[~negative_df['spotify_id'].isin(positive_song_df['spotify_id'])]
+    return negative_df['spotify_id']
+
+
+def get_negative_features(positive_song_df):
+    # List of Series
+    negative_ids = Parallel(n_jobs=8, verbose=1)(
+        delayed(remove_hit_songs)(csv, positive_song_df) for csv in glob.glob("*.csv"))
+    negative_featues = [collect_attributes_for_song(series.tolist())for series in negative_ids]#list(map(collect_attributes_for_song, negative_ids))
+    negative_dataset_df = pd.concat(negative_featues, ignore_index=True, axis=0)
+    negative_dataset_df = process_features_df(negative_dataset_df)
+    return negative_dataset_df
+
+
+def process_features_df(features_df):
+    columns_to_remove = ["type", "uri", "track_href", "analysis_url"]
+    features_df.drop(columns=columns_to_remove, inplace=True)
+    dataset_df = features_df.set_index("id")
+    dataset_df.dropna(inplace=True)
+    return dataset_df
+
+def get_positive_features():
+    # features_list = Parallel(n_jobs=8, verbose=5)(
+    #     delayed(sp.audio_features)(spotify_id) for index,spotify_id in song_ids.items())
+    # collect_attributes_for_song(song_ids.tolist())
+    features_df = pd.read_csv("..//data/features.csv", index_col=0)
+    positive_dataset_df = process_features_df(features_df)
+    positive_dataset_df.to_csv('../data/final_pos_features.csv')
+    return positive_dataset_df
+
+class DataGenerator:
+    dataset_df = None
+
+    def get_dataset(self):
+        pos_df = pd.read_csv("../data/final_pos_features.csv")
+        neg_df = pd.read_csv("../data/final_neg_features.csv")
+        length_neg = len(neg_df.columns)
+        length_pos = len(pos_df.columns)
+        assert length_pos == length_neg
+
+        pos_df.insert(length_pos, column='label', value=1)
+        neg_df.insert(length_neg, column='label', value=0)
+
+        self.dataset_df = pd.concat([pos_df, neg_df], ignore_index=True, axis=0)
+        self.dataset_df = self.dataset_df.apply(np.random.permutation, axis=0)
+
+        return self.dataset_df
+
+    def convert_to_numpy_dataset(self, df):
+        df = df.to_numpy()
+        return df[:, 1:]
+
+
 # 1. Setup spotify client
 # 2. Parrallelize song feature extraction
 
 # parallel_getcsv()
 # merge_csv()
-positive_df = pd.read_csv("..//data/positive_dataset.csv",delimiter=",", index_col=0)
+sp = get_spotify_client()
+positive_df = pd.read_csv("..//data/positive_dataset.csv", delimiter=",", index_col=0)
 unique_songs = positive_df.drop_duplicates(subset='spotify_id')
 song_ids = unique_songs['spotify_id']
 song_ids.dropna(inplace=True)
-sp = get_spotify_client()
-# features_list = Parallel(n_jobs=8, verbose=5)(
-#     delayed(sp.audio_features)(spotify_id) for index,spotify_id in song_ids.items())
-features_df = pd.read_csv("..//data/features.csv", index_col=0)#collect_attributes_for_song(song_ids.tolist())
-columns_to_remove = ["type","uri","track_href","analysis_url"]
-features_df.drop(columns=columns_to_remove, inplace=True)
-positive_dataset_df = features_df.set_index("id")
-print(positive_dataset_df)
+# positive_df = get_positive_features()
+# negative_dataset_df = get_negative_features(unique_songs)
