@@ -4,8 +4,8 @@ import re
 import numpy as np
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-import json
 import pandas as pd
+import json
 
 SPOTIFY_CLIENT_ID = "a99f3cb2bc5245f4a7693a7fb422078c"
 SPOTIFY_CLIENT_SECRET = "87bcf9260b734bd79fe50c93e0778830"
@@ -67,23 +67,41 @@ def get_song_ids(song_list):
     return np.asanyarray(song_ids)
 
 
-if __name__ == "__main__":
-    urls = dfs_crawl('/wiki/Category:2020_songs', [])
-    song_list = []
-    for url in urls:
-        song_list = page_crawl(url, song_list)
-    ids = get_song_ids(song_list)
-    df = pd.DataFrame(data=ids)
-    df.to_csv('2020.csv')
-    # dfs_crawl('https://en.wikipedia.org/wiki/Category:2017_songs', [])
-    # songs = page_crawl("https://en.wikipedia.org/wiki/Category:2017_songs")
-    # ids = get_song_ids(songs)
-    # df = pd.DataFrame(data=ids)
-    # print(df)
-    # with open(r'ids.txt', 'a') as f:
-    #     for song_id in ids:
-    #         f.write(song_id + '\n')
+def get_playlist_tracks(playlist_id, ids):
+    client_credentials_manager = SpotifyClientCredentials(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET)
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    tracks = sp.playlist_tracks(playlist_id=playlist_id)
+    if len(tracks['items']) != 0:
+        for i in range(len(tracks['items'])):
+            ids.append(tracks['items'][i]['track']['id'])
+    if tracks['next']:
+        while tracks['next']:
+            tracks = sp.next(tracks)
+            # print(len(tracks['items']))
+            if len(tracks['items']) != 0:
+                for i in range(len(tracks['items'])):
+                    ids.append(tracks['items'][i]['track']['id'])
+    print(len(ids), '\n')
+    return ids
 
-    # Code to write to file
-    # with open(r'test.txt', 'a') as f:
-    #     f.write(" ".join(map(str, songs)))
+
+if __name__ == "__main__":
+    playlists = ['35GvQpyFcVqPjulIhRvKeW', '2JpL5Q4XH711AwgxK9YwM0', '4SvPa1JBBT9qxp2vkEnJ2S', '1ilzM4vhx25DPNJpP2XXUM']
+    track_ids = []
+    for p_id in playlists:
+        track_ids = get_playlist_tracks(p_id, track_ids)
+    df_track_ids = pd.DataFrame(data=track_ids)
+    df_track_ids.to_csv('playlist.csv')
+    # urls = dfs_crawl('/wiki/Category:2020_songs', [])
+    # song_list = []
+    # for url in urls:
+    #     song_list = page_crawl(url, song_list)
+    # ids = get_song_ids(song_list)
+    # df = pd.DataFrame(data=ids)
+    # df.to_csv('2020.csv')
+
+
+# 35GvQpyFcVqPjulIhRvKeW
+# 2JpL5Q4XH711AwgxK9YwM0
+# 4SvPa1JBBT9qxp2vkEnJ2S
+# 1ilzM4vhx25DPNJpP2XXUM
