@@ -51,12 +51,15 @@ def get_spotify_client():
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     return sp
 
+def take_top_n(csv):
+    df = pd.read_csv(csv)
+    return df[df['Position'] <= 30.]
 
 def merge_csv():
-    all_files = glob.glob("..//data/*.csv")
-    df_merged = pd.concat([pd.read_csv(f) for f in all_files])
+    all_files = glob.glob("..//data/top200weekly*.csv")
+    df_merged = pd.concat([take_top_n(f) for f in all_files])
     df_merged.reset_index(drop=True, inplace=True)
-    df_merged.to_csv("..//data/positive_dataset.csv")
+    df_merged.to_csv("..//data/top_n_positive_dataset.csv")
 
 
 def remove_hit_songs(csv, positive_song_df):
@@ -69,7 +72,7 @@ def remove_hit_songs(csv, positive_song_df):
 def get_negative_features(positive_song_df):
     # List of Series
     negative_ids = Parallel(n_jobs=8, verbose=1)(
-        delayed(remove_hit_songs)(csv, positive_song_df) for csv in glob.glob("*.csv"))
+        delayed(remove_hit_songs)(csv, positive_song_df) for csv in glob.glob("20*.csv"))
     negative_featues = [collect_attributes_for_song(series.tolist())for series in negative_ids]#list(map(collect_attributes_for_song, negative_ids))
     negative_dataset_df = pd.concat(negative_featues, ignore_index=True, axis=0)
     negative_dataset_df = process_features_df(negative_dataset_df)
@@ -83,20 +86,20 @@ def process_features_df(features_df):
     dataset_df.dropna(inplace=True)
     return dataset_df
 
-def get_positive_features():
+def get_positive_features(song_ids):
     # features_list = Parallel(n_jobs=8, verbose=5)(
     #     delayed(sp.audio_features)(spotify_id) for index,spotify_id in song_ids.items())
-    # collect_attributes_for_song(song_ids.tolist())
+    # features_df = collect_attributes_for_song(song_ids.to_numpy())
     features_df = pd.read_csv("..//data/features.csv", index_col=0)
     positive_dataset_df = process_features_df(features_df)
-    positive_dataset_df.to_csv('../data/final_pos_features.csv')
+    positive_dataset_df.to_csv('../data/top_n_final_pos_features.csv')
     return positive_dataset_df
 
 class DataGenerator:
     dataset_df = None
 
     def get_dataset(self):
-        pos_df = pd.read_csv("../data/final_pos_features.csv")
+        pos_df = pd.read_csv("../data/top_n_final_pos_features.csv")
         neg_df = pd.read_csv("../data/final_neg_features.csv")
         length_neg = len(neg_df.columns)
         length_pos = len(pos_df.columns)
@@ -109,6 +112,10 @@ class DataGenerator:
         self.dataset_df = self.dataset_df.apply(np.random.permutation, axis=0)
 
         return self.dataset_df
+    def get_separate_datasets(self):
+        pos_df = pd.read_csv("../data/final_pos_features.csv")
+        neg_df = pd.read_csv("../data/final_neg_features.csv")
+        return pos_df, neg_df
 
     def convert_to_numpy_dataset(self, df):
         df = df.to_numpy()
@@ -120,10 +127,10 @@ class DataGenerator:
 
 # parallel_getcsv()
 # merge_csv()
-sp = get_spotify_client()
-positive_df = pd.read_csv("..//data/positive_dataset.csv", delimiter=",", index_col=0)
-unique_songs = positive_df.drop_duplicates(subset='spotify_id')
-song_ids = unique_songs['spotify_id']
-song_ids.dropna(inplace=True)
-# positive_df = get_positive_features()
+# sp = get_spotify_client()
+# positive_df = pd.read_csv("..//data/top_n_positive_dataset.csv", delimiter=",", index_col=0)
+# unique_songs = positive_df.drop_duplicates(subset='spotify_id')
+# song_ids = unique_songs['spotify_id']
+# song_ids.dropna(inplace=True)
+# # positive_df = get_positive_features(song_ids)
 # negative_dataset_df = get_negative_features(unique_songs)
