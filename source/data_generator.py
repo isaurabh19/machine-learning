@@ -108,10 +108,11 @@ class DataGenerator:
         pos_df.insert(length_pos, column='label', value=1)
         neg_df.insert(length_neg, column='label', value=0)
 
-        self.dataset_df = pd.concat([pos_df, neg_df], ignore_index=True, axis=0)
-        self.dataset_df = self.dataset_df.apply(np.random.permutation, axis=0)
+        dataset_df = pd.concat([pos_df, neg_df], ignore_index=True, axis=0)
+        # self.dataset_df = self.dataset_df.apply(np.random.permutation, axis=0)
 
-        return self.dataset_df
+        return dataset_df
+
     def get_separate_datasets(self):
         pos_df = pd.read_csv("../data/final_pos_features.csv")
         neg_df = pd.read_csv("../data/final_neg_features.csv")
