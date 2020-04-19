@@ -1,5 +1,5 @@
 from sklearn.model_selection import KFold
-from sklearn.metrics import roc_auc_score, average_precision_score
+from sklearn.metrics import roc_auc_score, average_precision_score, precision_score, recall_score
 from sklearn.utils import compute_class_weight
 from keras.models import Sequential
 from keras.layers import Dense
@@ -51,12 +51,21 @@ class NeuralNetworks:
         X_train = train[:, :-1]
         y_train = train[:, -1:]
         y_train = y_train.astype('int')
+        X_test = test[:, :-1]
+        y_test = test[:, -1:]
+        y_test = y_test.astype('int')
+
         data = np.concatenate((train, test), axis=0)
         class_weights = compute_class_weight("balanced", np.unique(y_train), y_train.ravel())
-        early_stopping = EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=3, restore_best_weights=True)
+        early_stopping = EarlyStopping(monitor='val_loss', mode='min', patience=3, restore_best_weights=True)
         model = self.get_nn_model(X_train.shape[1])
-        model.fit(X_train, y_train, class_weight=class_weights, callbacks=[early_stopping], validation_split=0.1,
+        model.fit(X_train, y_train, class_weight=class_weights, validation_split=0.1,
                   epochs=10000, verbose=1)
         y_scores = model.predict_proba(test[:, :-1].astype('int'))
         avergae_pr = average_precision_score(test[:, -1:].astype('int'), y_scores)
+        y_labels = model.predict_classes(X_test)
+        recall = recall_score(y_test, y_labels)
+        precision = precision_score(y_test, y_labels)
+
         print("Test area under pr curve {}".format(avergae_pr))
+        print("NN: Recall {} and precision {}".format(recall, precision))
