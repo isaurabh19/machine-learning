@@ -17,5 +17,5 @@ def bootstrapping(model, X,Y,B)
 	p = (alpha+((1.0-alpha)/2.0)) * 100
 	upper = min(1.0, np.percentile(roc_scores, p))
 	print('%.1f confidence interval %.1f%% and %.1f%%' % (alpha*100, lower*100, upper*100))
-return np.mean(roc_scores), np.std(roc_scores), np.mean(accuracy_scores), np.std(accuracy_scores)"
+return np.mean(roc_scores), np.std(roc_scores), np.mean(accuracy_scores), np.std(accuracy_scores)
 
