@@ -5,8 +5,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.utils import compute_class_weight
 import statistics
 import numpy as np
+from source.models.BaseModel import BaseClassifier
 
-class LogisticRegressionClassifier:
+class LogisticRegressionClassifier(BaseClassifier):
 
     def run(self, train, test):
         X_train = train[:, :-1]
@@ -37,3 +38,5 @@ class LogisticRegressionClassifier:
         precision = precision_score(y_test, y_pred_class)
 
         print("LR: Recall {} and Precision {}".format(recall, precision))
+
+        self.bootstrap(100, bg_clf, test)

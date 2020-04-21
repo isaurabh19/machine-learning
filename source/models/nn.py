@@ -1,27 +1,21 @@
 from sklearn.model_selection import KFold
 from sklearn.metrics import roc_auc_score, average_precision_score, precision_score, recall_score
-from sklearn.utils import compute_class_weight
+from sklearn.utils import compute_class_weight, resample
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.callbacks import EarlyStopping
 import numpy as np
-
-"""
-1. Split test data aside for final testing
-1. Split into K folds
-2. Build model architecture, class weights, regularization
-3. train and predict
-4. evaluate: precision, recall, f1, roc, accuracy: train and test
-"""
+from source.models.BaseModel import BaseClassifier
+import math, statistics
 
 
-class NeuralNetworks:
+class NeuralNetworks(BaseClassifier):
     def get_nn_model(self, no_dims):
         model = Sequential()
-        model.add(Dense(2 * no_dims, input_dim=no_dims, activation="tanh"))
-        model.add(Dense(no_dims, activation='relu'))
-        model.add(Dense(2, activation='relu'))
-        model.add(Dense(1, activation='sigmoid'))
+        model.add(Dense(no_dims, input_dim=no_dims, activation="tanh"))
+        # model.add(Dense(int(no_dims/2), activation='relu'))
+        model.add(Dense(2, activation='tanh'))
+        model.add(Dense(1, activation='relu'))
         model.compile(optimizer='adadelta', loss='binary_crossentropy')
         return model
 
@@ -60,12 +54,36 @@ class NeuralNetworks:
         early_stopping = EarlyStopping(monitor='val_loss', mode='min', patience=3, restore_best_weights=True)
         model = self.get_nn_model(X_train.shape[1])
         model.fit(X_train, y_train, class_weight=class_weights, validation_split=0.1,
-                  epochs=10000, verbose=1)
+                  epochs=200, verbose=1)
         y_scores = model.predict_proba(test[:, :-1].astype('int'))
-        avergae_pr = average_precision_score(test[:, -1:].astype('int'), y_scores)
+        auroc = roc_auc_score(test[:, -1:].astype('int'), y_scores)
         y_labels = model.predict_classes(X_test)
         recall = recall_score(y_test, y_labels)
         precision = precision_score(y_test, y_labels)
 
-        print("Test area under pr curve {}".format(avergae_pr))
+        print("Test area under roc curve {}".format(auroc))
         print("NN: Recall {} and precision {}".format(recall, precision))
+
+        self.bootstrap(100, model, test)
+
+
+    def bootstrap(self, B, clf, test_data):
+        aurocs = []
+        precisions = []
+        for b in range(B):
+            resampled_data = resample(test_data, replace=True, stratify=test_data[:, -1:])
+            X =  resampled_data[:, :-1]
+            y = resampled_data[:, -1:]
+            y = y.astype('int')
+            y_score = clf.predict_proba(X)[:, -1:]
+            y_class = clf.predict_classes(X)
+            aurocs.append(roc_auc_score(y, y_score))
+            precisions.append(precision_score(y, y_class))
+        auroc_mean = statistics.mean(aurocs)
+        auroc_se = math.sqrt(math.fabs(sum(list(map(lambda x: (x - auroc_mean) ** 2, aurocs))) / B-1))
+
+        precision_mean = statistics.mean(precisions)
+        precision_se = math.sqrt(math.fabs(sum(list(map(lambda x: (x - precision_mean) ** 2, precisions))) / B-1))
+
+        print("RF: Sample mean and standard error for Auroc {} {}".format(auroc_mean, auroc_se))
+        print("RF: Sample mean and standard error for precision {} {}".format(precision_mean, precision_se))
