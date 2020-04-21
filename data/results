@@ -1,9 +1,91 @@
+Subset of features
+\begin{center}
+ \begin{tabular}{| c | p{3cm} | p{1.5cm} |p{1.5cm}|}
+  \hline
+   \textbf{Algorithm} & \textbf{Accuracy} & \textbf{AUC ROC} & \textbf{Precision} \\   \hline
+   Logistic Regression & 0.71 $\pm$ 0.02 & 0.75 $\pm$ 0.02 & 0.26 $\pm$ 0.04  \\   \hline
+   SVM                 & 0.74 $\pm$ 0.08 & 0.71 $\pm$ 0.03 & 0.25 $\pm$ 0.02\\ \hline
+   Random Forest       & 0.85 $\pm$ 0.09 & 0.82 $\pm$ 0.09 & 0.67 $\pm$ 0.05  \\ \hline
+   Neural Network      & 0.73 $\pm$ 0.01 & 0.62 $\pm$ 0.03 & 0.53 $\pm$ 0.01  \\ \hline
+\end{tabular} \end{center}
+
+full features
+\begin{center}
+ \begin{tabular}{ | p{3cm} | p{1.5cm} |p{1.5cm}|}
+  \hline
+   \textbf{Algorithm} & \textbf{Accuracy} & \textbf{AUC ROC} & \textbf{Precision} \\   \hline
+   Logistic Regression & 0.65 $\pm$ 0.05 & 0.62 $\pm$ 0.01 & 0.19 $\pm$ 0.02  \\   \hline
+   SVM                 & 0.66 $\pm$ 0.07 & 0.66 $\pm$ 0.06 & 0.25 $\pm$ 0.04\\ \hline
+   Random Forest       & 0.73 $\pm$ 0.08 & 0.67 $\pm$ 0.02 & 0.61 $\pm$ 0.09  \\ \hline
+   Neural Network      & 0.56 $\pm$ 0.02 & 0.54 $\pm$ 0.01 & 0.45 $\pm$ 0.0  \\ \hline
+\end{tabular} \end{center}
+
+cross val on subset features
+\begin{center}
+ \begin{tabular}{ | p{3cm} | p{1.5cm} |p{1.5cm}|}
+  \hline
+   \textbf{Algorithm} & \textbf{AUC ROC} & \textbf{Precision} \\   \hline
+   Logistic Regression & 0.75 & 0.26 \\   \hline
+   SVM                 & 0.73 & 0.25 \\ \hline
+   Random Forest       & 0.81 & 0.64 \\ \hline
+   Neural Network      & 0.53 & 0.44 \\ \hline
+\end{tabular} \end{center}
+
 RF:
 Recall 0.20588235294117646 and Precision 0.6712328767123288
 Train auroc 0.7306073987522544
 Test auroc 0.7672093719801303
+Feature importance: [0.2919306  0.29598663 0.28226125 0.12982152]
+Mean and SD for positive label feature Danceability are: 0.9435950395219573, 0.7080228603277837
+Mean and SD for negative label feature Danceability are: 0.5127629640138607, 0.8638735691637105
+Mean and SD for positive label feature Energy are:      -0.2754564814857458, 0.649512805348771
+Mean and SD for negative label feature Energy are:      -0.27551638597118927, 0.7897381576509264
+Mean and SD for positive label feature Speechiness are:  0.8174041851636521, 1.2624113355799493
+Mean and SD for negative label feature Speechiness are:  0.416915575167063, 1.240550636751815
+Mean and SD for positive label feature Instrumentalness are: -0.269927440137765, 0.1100832556281592
+Mean and SD for negative label feature Instrumentalness are: -0.22325372082939088, 0.40794160693854886
+RF: Sample mean and standard error for Auroc 0.7383507061197041 0.9998933946234164
+RF: Sample mean and standard error for precision 0.6132647483700703 0.9980411706635075
+
 
 LR:
 LR: Recall 0.7184873949579832 and Precision 0.265527950310559
 LR: Train auroc 0.7231121532383138
 LR: Test auroc 0.7570258769277717
+
+
+Gradient boosting
+Train auroc 0.754158069994456
+Test auroc 0.7492596904262714
+Recall 0.025210084033613446 and Precision 0.5454545454545454
+
+
+SVM: Train auroc 0.7308040256987867
+SVM: Test auroc 0.714264522217764
+SVM: Recall 0.6470588235294118 and Precision 0.24919093851132687
+Sample mean and standard error for Auroc 0.7159096341966511 0.999875317825387
+Sample mean and standard error for precision 0.2506811478915119 0.9999341432200262
+
+
+
+FULL features:
+LR
+LR: Train auroc 0.7477434612658512
+LR: Test auroc 0.7552683480924312
+LR: Recall 0.6764705882352942 and Precision 0.254746835443038
+Sample mean and standard error for Auroc 0.756720372076201 0.9999048925245551
+Sample mean and standard error for precision 0.2553256557629407 0.9999397414940093
+
+
+Train auroc 0.8022695214636097
+Test auroc 0.8150059620351167
+Recall 0.12184873949579832 and Precision 0.6444444444444445
+RF: Sample mean and standard error for Auroc 0.8135276881431793 0.9999054346300118
+RF: Sample mean and standard error for precision 0.6410753834648538 0.9974359954205949
+
+gradient boosting
+Train auroc 0.7755986968146698
+Test auroc 0.7805928692929762
+Recall 0.06722689075630252 and Precision 0.7272727272727273
+
+SVM same as above

@@ -43,8 +43,8 @@ preprocessed_dataset = preprocessor.z_score(X)
 data = np.concatenate((preprocessed_dataset, y), axis=1)
 
 train, test = train_test_split(data, random_state=1, stratify=y)
-# lr = LogisticRegressionClassifier()
-# lr.run(train, test)
+# # lr = LogisticRegressionClassifier()
+# # lr.run(train, test)
 rf = RandomForest()
 model = rf.run(train, test)
 #

@@ -4,11 +4,12 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 from sklearn.utils import compute_class_weight
+from source.models.BaseModel import BaseClassifier
 import statistics
 import numpy as np
 
 
-class SVMClassifier:
+class SVMClassifier(BaseClassifier):
 
     def run(self, train, test):
         X_train = train[:, :-1]
@@ -50,3 +51,5 @@ class SVMClassifier:
         precision = precision_score(y_test, y_pred_class)
 
         print("SVM: Recall {} and Precision {}".format(recall, precision))
+
+        self.bootstrap(100, bg_clf, test)

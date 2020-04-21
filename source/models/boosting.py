@@ -1,14 +1,11 @@
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import roc_auc_score, recall_score, precision_score
 from sklearn.ensemble import GradientBoostingClassifier
+from source.models.BaseModel import BaseClassifier
 import statistics
 
 
-class GradientBoosting:
-
-    def bootstrap(self, B, clf, test):
-        for b in B:
-            clf.predict_proba()
+class GradientBoosting(BaseClassifier):
 
     def run(self, train, test):
         X_train = train[:, :-1]
@@ -35,5 +32,5 @@ class GradientBoosting:
         precision = precision_score(y_test, y_pred_class)
 
         print("Recall {} and Precision {}".format(recall, precision))
-
+        self.bootstrap(100, clf, test)
         return clf
