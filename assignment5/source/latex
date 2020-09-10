@@ -1,0 +1,4 @@
+\node[state] (y1) [right = of z1] {$y_1$};
+\node[state] (y2) [right = of z2] {$y_2$};
+\node[state] (s) [below right = of y1] {$s$};
+\node[state] () [] {};

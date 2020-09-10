@@ -1,0 +1,104 @@
+
+Concept 1 Combination 1x0 Sample mean accuracy 0.7098 and Standard error accuracy 0.0611704028253713
+Concept 1 Combination 1x0 Sample mean auroc 0.6889230484710664 and standard error auroc 0.17823300155291816
+
+---------------------------------------
+
+Concept 1 Combination 4x0 Sample mean accuracy 0.772394 and Standard error accuracy 0.11249066241832299
+Concept 1 Combination 4x0 Sample mean auroc 0.8745781182391611 and standard error auroc 0.09335879072884036
+
+---------------------------------------
+
+Concept 1 Combination 8x0 Sample mean accuracy 0.8356520000000001 and Standard error accuracy 0.1350635800897736
+Concept 1 Combination 8x0 Sample mean auroc 0.9137200274056012 and standard error auroc 0.07757335439253944
+
+---------------------------------------
+Concept 1 Combination 1x3 Sample mean accuracy 0.7112739999999999 and Standard error accuracy 0.06502625142000246
+Concept 1 Combination 1x3 Sample mean auroc 0.7123152322944734 and standard error auroc 0.2219542014845261
+
+---------------------------------------
+
+Concept 1 Combination 4x3 Sample mean accuracy 0.834208 and Standard error accuracy 0.15205995415153098
+Concept 1 Combination 4x3 Sample mean auroc 0.9168097445814842 and standard error auroc 0.0859529223969489
+
+---------------------------------------
+Concept 1 Combination 8x3 Sample mean accuracy 0.8827079999999999 and Standard error accuracy 0.1341316531011094
+Concept 1 Combination 8x3 Sample mean auroc 0.9526535030008484 and standard error auroc 0.06496594143760173
+
+---------------------------------------
+Concept 2 Combination 1x0 Sample mean accuracy 0.96172 and Standard error accuracy 0.03065770620080616
+Concept 2 Combination 1x0 Sample mean auroc 0.626092359387869 and standard error auroc 0.46905689191076605
+
+---------------------------------------
+
+Concept 2 Combination 4x0 Sample mean accuracy 0.962044 and Standard error accuracy 0.03106949915556698
+Concept 2 Combination 4x0 Sample mean auroc 0.7986299977576852 and standard error auroc 0.39564797182433065
+
+---------------------------------------
+Concept 2 Combination 8x0 Sample mean accuracy 0.9619780000000001 and Standard error accuracy 0.029621776728712062
+Concept 2 Combination 8x0 Sample mean auroc 0.8695965381733964 and standard error auroc 0.2564408583514706
+
+---------------------------------------
+Concept 2 Combination 1x3 Sample mean accuracy 0.961522 and Standard error accuracy 0.029921026693344538
+Concept 2 Combination 1x3 Sample mean auroc 0.6773789247031387 and standard error auroc 0.39103114650926696
+
+---------------------------------------
+Concept 2 Combination 4x3 Sample mean accuracy 0.9625339999999999 and Standard error accuracy 0.02956636841775022
+Concept 2 Combination 4x3 Sample mean auroc 0.8863329580854113 and standard error auroc 0.1864310956541877
+
+---------------------------------------
+Concept 2 Combination 8x3 Sample mean accuracy 0.9620019999999999 and Standard error accuracy 0.030200006020469097
+Concept 2 Combination 8x3 Sample mean auroc 0.9388105521772041 and standard error auroc 0.0846447802638174
+
+---------------------------------------
+
+
+
+
+
+
+
+
+
+h1=1, h2=0 & 0.72 $\pm$ 0.008 & 0.59 $\pm$ 0.021\\
+\hline
+h1=4, h2=0 & 0.90 $\pm$ 0.003 & 0.86 $\pm$ 0.009\\
+\hline
+h1=8, h2=0 & 0.93 $\pm$ 0.003 & 0.92 $\pm$ 0.006\\
+\hline
+h1=1, h2=3 & 0.79 $\pm$ 0.005 & 0.74 $\pm$ 0.017\\
+\hline
+h1=4, h2=3 & 0.94 $\pm$ 0.003 & 0.95 $\pm$ 0.003\\
+\hline
+h1=8, h2=3 & 0.97 $\pm$ 0.001 & 0.96 $\pm$ 0.003\\
+\hline
+
+2 h1=1, h2=0 & 0.59 $\pm$ 0.021
+2 h1=4, h2=0 & 0.86 $\pm$ 0.009
+2 h1=8, h2=0 & 0.92 $\pm$ 0.006
+2 h1=1, h2=3 & 0.74 $\pm$ 0.017
+2 h1=4, h2=3 & 0.95 $\pm$ 0.003
+2 h1=8, h2=3 & 0.96 $\pm$ 0.003
+
+
+
+
+h1=1, h2=0 & 71.0 $\pm$ 0.006 & 96.1 $\pm$ 0.002\\
+\hline
+h1=4, h2=0 & 80.6 $\pm$ 0.005 & 96.1 $\pm$ 0.002\\
+\hline
+h1=8, h2=0 & 87.0 $\pm$ 0.004 & 96.2 $\pm$ 0.002\\
+\hline
+h1=1, h2=3 & 70.9 $\pm$ 0.006 & 96.2 $\pm$ 0.002\\
+\hline
+h1=4, h2=3 & 87.9 $\pm$ 0.004 & 96.1 $\pm$ 0.002\\
+\hline
+h1=8, h2=3 & 92.4 $\pm$ 0.003 & 96.1 $\pm$ 0.002\\
+\hline
+
+2 h1=1, h2=0 & 96.1 $\pm$ 0.002
+2 h1=4, h2=0 & 96.1 $\pm$ 0.002
+2 h1=8, h2=0 & 96.2 $\pm$ 0.002
+2 h1=1, h2=3 & 96.2 $\pm$ 0.002
+2 h1=4, h2=3 & 96.1 $\pm$ 0.002
+2 h1=8, h2=3 & 96.1 $\pm$ 0.002

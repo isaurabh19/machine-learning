@@ -1,0 +1,5 @@
+True accuracy for combination 12x3: is 0.9909796118736267
+True auroc for combination 12x3: is 0.9975638945772719
+
+True accuracy for combination 24x9: is 0.992422878742218
+True auroc for combination 24x9: is 0.9985018793826406

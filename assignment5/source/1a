@@ -1,0 +1,63 @@
+--------------------------------------------
+Concept 1 Combination 1x0 Sample mean auroc 0.5456623369433455 and standard error auroc 0.17774825669992061
+
+--------------------------------------------
+Concept 1 Combination 4x0 Sample mean auroc 0.822634025534575 and standard error auroc 0.2892886491586994
+
+--------------------------------------------
+Concept 1 Combination 8x0 Sample mean auroc 0.9201222662152496 and standard error auroc 0.07945236382727369
+
+--------------------------------------------
+Concept 1 Combination 1x3 Sample mean auroc 0.5837121090193238 and standard error auroc 0.16544748768370784
+
+--------------------------------------------
+Concept 1 Combination 4x3 Sample mean auroc 0.8569627390010863 and standard error auroc 0.26354446811000903
+
+--------------------------------------------
+Concept 1 Combination 8x3 Sample mean auroc 0.9244431974231969 and standard error auroc 0.25831680929610373
+
+--------------------------------------------
+Concept 2 Combination 1x0 Sample mean auroc 0.5773570897844456 and standard error auroc 0.5110151482031562
+
+--------------------------------------------
+Concept 2 Combination 4x0 Sample mean auroc 0.7150733283370869 and standard error auroc 0.5352306094684807
+
+--------------------------------------------
+Concept 2 Combination 8x0 Sample mean auroc 0.8491820860894868 and standard error auroc 0.3011758737769063
+
+--------------------------------------------
+Concept 2 Combination 1x3 Sample mean auroc 0.528163788173514 and standard error auroc 0.5072725099766457
+
+--------------------------------------------
+Concept 2 Combination 4x3 Sample mean auroc 0.8168064137950637 and standard error auroc 0.40923359068284937
+
+--------------------------------------------
+Concept 2 Combination 8x3 Sample mean auroc 0.9088744254918674 and standard error auroc 0.2296387425901737
+
+
+
+
+
+
+
+h1=1, h2=0 & 53.8  $\pm$ 0.008 & 58.8  $\pm$ 0.020\\
+\hline
+h1=4, h2=0 & 87.2  $\pm$ 0.004 & 66.0  $\pm$ 0.018\\
+\hline
+h1=8, h2=0 & 92.4  $\pm$ 0.003 & 87.1  $\pm$ 0.008\\
+\hline
+h1=1, h2=3 & 53.8  $\pm$ 0.009 & 56.6  $\pm$ 0.017\\
+\hline
+h1=4, h2=3 & 88.3  $\pm$ 0.004 & 81.8  $\pm$ 0.009\\
+\hline
+h1=8, h2=3 & 95.4  $\pm$ 0.002 & 91.2  $\pm$ 0.008\\
+\hline
+
+ 2 h1=1, h2=0 & 58.8  $\pm$ 0.020
+ 2 h1=4, h2=0 & 66.0  $\pm$ 0.018
+ 2 h1=8, h2=0 & 87.1  $\pm$ 0.008
+ 2 h1=1, h2=3 & 56.6  $\pm$ 0.017
+ 2 h1=4, h2=3 & 81.8  $\pm$ 0.009
+ 2 h1=8, h2=3 & 91.2  $\pm$ 0.008
+
+

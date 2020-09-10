@@ -1,0 +1,184 @@
+Concept 1 Combination 1x0 Sample mean accuracy 0.7109179999999999 and Standard error accuracy 0.02082790740795384
+Concept 1 Combination 1x0 Sample mean auroc 0.6147518518051256 and standard error auroc 0.026357584560998362
+
+Concept 1 Combination 1x0 Sample mean accuracy 0.710386 and Standard error accuracy 0.06463627870826533
+Concept 1 Combination 1x0 Sample mean auroc 0.6732331236713706 and standard error auroc 0.18150467681931132
+
+Concept 1 Combination 1x0 Sample mean accuracy 0.7112139999999999 and Standard error accuracy 0.006299607491380269
+Concept 1 Combination 1x0 Sample mean auroc 0.6815307726132332 and standard error auroc 0.006098258090056563
+--------------------------------------------
+
+Concept 1 Combination 4x0 Sample mean accuracy 0.765742 and Standard error accuracy 0.019241370643214576
+Concept 1 Combination 4x0 Sample mean auroc 0.8767810133618227 and standard error auroc 0.01484418996117679
+
+Concept 1 Combination 4x0 Sample mean accuracy 0.779906 and Standard error accuracy 0.1384533310862861
+Concept 1 Combination 4x0 Sample mean auroc 0.8798109400610465 and standard error auroc 0.09170838789695371
+
+Concept 1 Combination 4x0 Sample mean accuracy 0.7787539999999998 and Standard error accuracy 0.005751757219416626
+Concept 1 Combination 4x0 Sample mean auroc 0.8846018359705344 and standard error auroc 0.004944243115140691
+--------------------------------------------
+
+Concept 1 Combination 8x0 Sample mean accuracy 0.78416 and Standard error accuracy 0.019448709980489944
+Concept 1 Combination 8x0 Sample mean auroc 0.9069803347333008 and standard error auroc 0.012934061412595666
+
+Concept 1 Combination 8x0 Sample mean accuracy 0.82811 and Standard error accuracy 0.13440718700721296
+Concept 1 Combination 8x0 Sample mean auroc 0.9143687931853369 and standard error auroc 0.08339944007276619
+
+Concept 1 Combination 8x0 Sample mean accuracy 0.8301700000000003 and Standard error accuracy 0.00499457281213894
+Concept 1 Combination 8x0 Sample mean auroc 0.9147609190037223 and standard error auroc 0.003657114185635255
+--------------------------------------------
+
+Concept 1 Combination 1x3 Sample mean accuracy 0.710402 and Standard error accuracy 0.020912772694824732
+Concept 1 Combination 1x3 Sample mean auroc 0.6339723314640708 and standard error auroc 0.02554681288085896
+
+Concept 1 Combination 1x3 Sample mean accuracy 0.7085739999999999 and Standard error accuracy 0.06627296811695003
+Concept 1 Combination 1x3 Sample mean auroc 0.7421967907698003 and standard error auroc 0.15790427415606956
+
+Concept 1 Combination 1x3 Sample mean accuracy 0.7088500000000001 and Standard error accuracy 0.006481138134243967
+Concept 1 Combination 1x3 Sample mean auroc 0.7419062236167008 and standard error auroc 0.007285779494694094
+--------------------------------------------
+
+Concept 1 Combination 4x3 Sample mean accuracy 0.85411 and Standard error accuracy 0.01533186085913503
+Concept 1 Combination 4x3 Sample mean auroc 0.9257134054714785 and standard error auroc 0.011024251546222047
+
+Concept 1 Combination 4x3 Sample mean accuracy 0.846422 and Standard error accuracy 0.13983922644424626
+Concept 1 Combination 4x3 Sample mean auroc 0.9215519557308759 and standard error auroc 0.08455185381063288
+
+Concept 1 Combination 4x3 Sample mean accuracy 0.8379179999999999 and Standard error accuracy 0.004925554473222982
+Concept 1 Combination 4x3 Sample mean auroc 0.9228382403630871 and standard error auroc 0.0034183955987232813
+--------------------------------------------
+
+Concept 1 Combination 8x3 Sample mean accuracy 0.88915 and Standard error accuracy 0.013783680466560613
+Concept 1 Combination 8x3 Sample mean auroc 0.9581370762300503 and standard error auroc 0.00813514497530226
+
+Concept 1 Combination 8x3 Sample mean accuracy 0.8885879999999999 and Standard error accuracy 0.12133925460077095
+Concept 1 Combination 8x3 Sample mean auroc 0.9529653594018445 and standard error auroc 0.06424598106775241
+
+Concept 1 Combination 8x3 Sample mean accuracy 0.8855019999999999 and Standard error accuracy 0.004930998218854222
+Concept 1 Combination 8x3 Sample mean auroc 0.9523955789928003 and standard error auroc 0.0031009171980139914
+--------------------------------------------
+
+Concept 2 Combination 1x0 Sample mean accuracy 0.962222 and Standard error accuracy 0.00863876277770391
+Concept 2 Combination 1x0 Sample mean auroc 0.5882002867278728 and standard error auroc 0.06730223762161133
+
+Concept 2 Combination 1x0 Sample mean accuracy 0.961516 and Standard error accuracy 0.030470675420903648
+Concept 2 Combination 1x0 Sample mean auroc 0.5899462681067594 and standard error auroc 0.5418148544137223
+
+Concept 2 Combination 1x0 Sample mean accuracy 0.962304 and Standard error accuracy 0.0031617000924735873
+Concept 2 Combination 1x0 Sample mean auroc 0.5837645724883425 and standard error auroc 0.02184548934401741
+--------------------------------------------
+
+Concept 2 Combination 4x0 Sample mean accuracy 0.962202 and Standard error accuracy 0.008397025154942072
+Concept 2 Combination 4x0 Sample mean auroc 0.6238916595037423 and standard error auroc 0.06258111273117643
+
+Concept 2 Combination 4x0 Sample mean accuracy 0.9626419999999999 and Standard error accuracy 0.030338134152224732
+Concept 2 Combination 4x0 Sample mean auroc 0.8004819570198943 and standard error auroc 0.3894946290333414
+
+Concept 2 Combination 4x0 Sample mean accuracy 0.9618539999999999 and Standard error accuracy 0.00277548503359631
+Concept 2 Combination 4x0 Sample mean auroc 0.8048653041510738 and standard error auroc 0.01453251890990164
+--------------------------------------------
+
+Concept 2 Combination 8x0 Sample mean accuracy 0.9618 and Standard error accuracy 0.00846594246430913
+Concept 2 Combination 8x0 Sample mean auroc 0.7127347182885688 and standard error auroc 0.050062059972245415
+
+Concept 2 Combination 8x0 Sample mean accuracy 0.9620599999999999 and Standard error accuracy 0.02969957316973845
+Concept 2 Combination 8x0 Sample mean auroc 0.8465322419662165 and standard error auroc 0.41483771453753615
+
+Concept 2 Combination 8x0 Sample mean accuracy 0.961472 and Standard error accuracy 0.0027498422360623465
+Concept 2 Combination 8x0 Sample mean auroc 0.862662682060234 and standard error auroc 0.01088453507265067
+--------------------------------------------
+
+Concept 2 Combination 1x3 Sample mean accuracy 0.961904 and Standard error accuracy 0.008561823097510652
+Concept 2 Combination 1x3 Sample mean auroc 0.6102562337138961 and standard error auroc 0.060938060052021965
+
+Concept 2 Combination 1x3 Sample mean accuracy 0.96225 and Standard error accuracy 0.03016009471356669
+Concept 2 Combination 1x3 Sample mean auroc 0.697015841226555 and standard error auroc 0.47451054946101473
+
+Concept 2 Combination 1x3 Sample mean accuracy 0.961944 and Standard error accuracy 0.002839558935731921
+Concept 2 Combination 1x3 Sample mean auroc 0.7137342300686703 and standard error auroc 0.014119660359136792
+--------------------------------------------
+
+Concept 2 Combination 4x3 Sample mean accuracy 0.96214 and Standard error accuracy 0.008445644982455088
+Concept 2 Combination 4x3 Sample mean auroc 0.6348581185890496 and standard error auroc 0.06072514787231522
+
+Concept 2 Combination 4x3 Sample mean accuracy 0.9616140000000001 and Standard error accuracy 0.02918125245683424
+Concept 2 Combination 4x3 Sample mean auroc 0.878774553322762 and standard error auroc 0.326528715530666
+
+Concept 2 Combination 4x3 Sample mean accuracy 0.961932 and Standard error accuracy 0.002665336031650824
+Concept 2 Combination 4x3 Sample mean auroc 0.8502117623357611 and standard error auroc 0.010359744483506244
+--------------------------------------------
+
+Concept 2 Combination 8x3 Sample mean accuracy 0.9618979999999999 and Standard error accuracy 0.008484970149596035
+Concept 2 Combination 8x3 Sample mean auroc 0.6682835818543198 and standard error auroc 0.053509210230695325
+
+Concept 2 Combination 8x3 Sample mean accuracy 0.961946 and Standard error accuracy 0.030037196468997697
+Concept 2 Combination 8x3 Sample mean auroc 0.916115831539526 and standard error auroc 0.1477707708492233
+
+Concept 2 Combination 8x3 Sample mean accuracy 0.9622699999999998 and Standard error accuracy 0.003034665042338589
+Concept 2 Combination 8x3 Sample mean auroc 0.9160590474217023 and standard error auroc 0.0056899785154482805
+--------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1=1, h2=0 & 68.1 $\pm$  0.00 & 58.3 $\pm$  0.02 \\
+\hline
+h1=4, h2=0 & 88.4 $\pm$  0.00 & 80.4 $\pm$  0.01 \\
+\hline
+h1=8, h2=0 & 91.4 $\pm$  0.00 & 86.2 $\pm$  0.01 \\
+\hline
+h1=1, h2=3 & 74.1 $\pm$  0.00 & 71.3 $\pm$  0.01 \\
+\hline
+h1=4, h2=3 & 92.2 $\pm$  0.00 & 85.0 $\pm$  0.01 \\
+\hline
+h1=8, h2=3 & 95.2 $\pm$  0.00 & 91.6 $\pm$  0.00 \\
+\hline
+
+ 2  h1=1, h2=0 &
+ 2  h1=4, h2=0 &
+ 2  h1=8, h2=0 &
+ 2  h1=1, h2=3 &
+ 2  h1=4, h2=3 &
+ 2  h1=8, h2=3 &
+
+
+
+
+
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Combination & Concept 1 & Concept 2 \\
+    \hline\hline
+h1=1, h2=0 & 0.72 $\pm$ 0.008 & 0.59 $\pm$ 0.021\\
+\hline
+h1=4, h2=0 & 0.90 $\pm$ 0.003 & 0.86 $\pm$ 0.009\\
+\hline
+h1=8, h2=0 & 0.93 $\pm$ 0.003 & 0.92 $\pm$ 0.006\\
+\hline
+h1=1, h2=3 & 0.79 $\pm$ 0.005 & 0.74 $\pm$ 0.017\\
+\hline
+h1=4, h2=3 & 0.94 $\pm$ 0.003 & 0.95 $\pm$ 0.003\\
+\hline
+h1=8, h2=3 & 0.97 $\pm$ 0.001 & 0.96 $\pm$ 0.003\\
+\hline
+
+    \end{tabular}
+\end{center}
+
+ 2  h1=1, h2=0
+ 2  h1=4, h2=0
+ 2  h1=8, h2=0
+ 2  h1=1, h2=3
+ 2  h1=4, h2=3
+ 2  h1=8, h2=3
