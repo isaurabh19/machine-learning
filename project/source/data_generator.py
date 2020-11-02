@@ -7,8 +7,8 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
 import pprint
 
-SPOTIFY_CLIENT_ID = "a99f3cb2bc5245f4a7693a7fb422078c"
-SPOTIFY_CLIENT_SECRET = "87bcf9260b734bd79fe50c93e0778830"
+SPOTIFY_CLIENT_ID = "whatever_your_creds"
+SPOTIFY_CLIENT_SECRET = "secret"
 
 
 def get_data(date_range):
